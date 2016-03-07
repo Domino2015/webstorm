@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+</head>
+<style type="text/css">
+	.nav-toggle {
+		z-index: 2;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 10px;
+		border: 2px solid red;
+		background: black;
+		width: 50px;
+		height: 50px;
+	}
+
+	.nav-toggle .toggle1,
+	.nav-toggle .toggle2,
+	.nav-toggle .toggle3 {
+		transition: all linear 0.5s;
+		position: absolute;
+		left: 10px;
+		width: 28px;
+		height: 1px;
+		background: white;
+	}
+
+	.nav-toggle .toggle1 {
+		top: 15px;
+	}
+
+	.nav-toggle .toggle2 {
+		top: 25px;
+	}
+
+	.nav-toggle .toggle3 {
+		top: 35px;
+	}
+
+	.nav-open .toggle1 {
+		transition: all linear 0.5s;
+		top: 25px;
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+		animation: linear rotation1 0.5s;
+	}
+
+	.nav-open .toggle3 {
+		transition: all linear 0.5s;
+		top: 25px;
+		-webkit-transform: rotate(-135deg);
+		transform: rotate(-135deg);
+		animation: linear rotation2 0.5s;
+	}
+
+	.nav-open .toggle2 {
+		transition: all linear 0.5s;
+		opacity: 0.0;
+	}
+
+	.nav-menu {
+		z-index: 1;
+		border: 2px solid red;
+		background: black;
+		position: absolute;
+		top: 0;
+		left: -210px;
+		width: 200px;
+		height: 360px;
+	}
+</style>
+
+<body>
+<div class="nav-toggle">
+	<span class="toggle1"></span>
+	<span class="toggle2"></span>
+	<span class="toggle3"></span>
+</div>
+<div class="nav-menu"></div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.nav-toggle').click(function() {
+			$('.nav-menu').stop();
+			if ($(this).hasClass('nav-open')) {
+				$(this).removeClass('nav-open');
+				$('.nav-menu').animate({
+					left: '-210'
+				})
+			} else {
+				$(this).addClass('nav-open');
+				$('.nav-menu').animate({
+					left: '70'
+				})
+			}
+		})
+	});
+</script>
+</body>
+
+</html>
